@@ -13,13 +13,17 @@ import {
   useLoaderData,
 } from "@remix-run/react";
 
-import globalCss from "./styles/global.css";
-import purpleLightThemeCss from "./styles/themes/purple-light.css";
-import purpleDarkThemeCss from "./styles/themes/purple-dark.css";
+import global from "./styles/global.css";
+import basicTheme from "./styles/themes/basic.css";
+import purpleTheme from "./styles/themes/purple.css";
+
+import useVariant from "./hooks/useVariant";
+
+import Header from "./components/header";
+import Footer from "./components/footer";
 
 export const loader: LoaderFunction = async () => {
-  // This is an API call
-  return { title: "My cool store", theme: "purple" };
+  return { title: "My cool store", theme: "basic" };
 };
 
 export const meta: MetaFunction = () => ({
@@ -30,41 +34,40 @@ export const meta: MetaFunction = () => ({
 export const links: LinksFunction = () => [
   {
     rel: "stylesheet",
-    href: globalCss,
+    href: global,
   },
 ];
 
 export default function App() {
   const config = useLoaderData();
-
-  const variant: "light" | "dark" = "dark";
+  const { variant, setVariant } = useVariant();
 
   return (
-    <html lang="en">
+    <html lang="en" data-theme={variant}>
       <head>
         <Meta />
 
         <title>{config.title}</title>
 
-        {config.theme === "purple" && variant === "light" && (
-          <link rel="stylesheet" href={purpleLightThemeCss} />
+        {config.theme === "basic" && (
+          <link rel="stylesheet" href={basicTheme} />
         )}
 
-        {config.theme === "purple" && variant === "dark" && (
-          <link rel="stylesheet" href={purpleDarkThemeCss} />
+        {config.theme === "purple" && (
+          <link rel="stylesheet" href={purpleTheme} />
         )}
 
         <Links />
       </head>
 
       <body>
-        <header>Header</header>
+        <Header variant={variant} setVariant={setVariant} />
 
         <main>
           <Outlet />
         </main>
 
-        <footer>Footer</footer>
+        <Footer />
 
         <ScrollRestoration />
         <Scripts />
