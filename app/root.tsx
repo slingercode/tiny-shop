@@ -40,6 +40,13 @@ export const meta: MetaFunction = () => ({
 
 export const links: LinksFunction = () => [
   {
+    rel: "preload",
+    href: "/fonts/inter/inter.ttf",
+    as: "font",
+    type: "font/ttf",
+    crossOrigin: "anonymous",
+  },
+  {
     rel: "stylesheet",
     href: global,
   },

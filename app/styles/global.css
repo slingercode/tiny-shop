@@ -1,8 +1,9 @@
 @font-face {
-  font-family: "inter";
+  font-family: "Inter";
   src: url("/fonts/inter/inter.ttf");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 html {
