@@ -3,7 +3,7 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-  src: url("/fonts/inter/inter.ttf");
+  src: url("/fonts/inter/inter.woff2") format("woff2");
 }
 
 html {
