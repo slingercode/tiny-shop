@@ -1,0 +1,19 @@
+header {
+  width: 100%;
+  padding: 16px;
+  position: fixed;
+}
+
+.header_container {
+  padding: 16px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--text-low);
+  border-radius: var(--border-radius);
+  background-color: var(--bg);
+  display: flex;
+}
+
+.header_title {
+  font-weight: 100;
+}

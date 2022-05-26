@@ -15,7 +15,10 @@ import {
 
 import { getConfig } from "./loaders/config";
 
-import global from "./styles/global.css";
+import globalCSS from "./styles/global.css";
+import headerCSS from "./styles/header.css";
+import footerCSS from "./styles/footer.css";
+
 import basicTheme from "./styles/themes/basic.css";
 import purpleTheme from "./styles/themes/purple.css";
 
@@ -46,7 +49,15 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: global,
+    href: globalCSS,
+  },
+  {
+    rel: "stylesheet",
+    href: headerCSS,
+  },
+  {
+    rel: "stylesheet",
+    href: footerCSS,
   },
 ];
 
@@ -58,6 +69,11 @@ export default function App() {
       <head>
         <Meta />
 
+        <meta
+          name="description"
+          content="A shop powered by Tiny Shop! ... this will come from a server"
+        />
+
         <title>{title}</title>
 
         {theme === "basic" && <link rel="stylesheet" href={basicTheme} />}
@@ -68,7 +84,7 @@ export default function App() {
       </head>
 
       <body>
-        <Header />
+        <Header>{title}</Header>
 
         <main>
           <Outlet />
