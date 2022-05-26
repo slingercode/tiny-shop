@@ -1,4 +1,8 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import type {
+  LinksFunction,
+  LoaderFunction,
+  MetaFunction,
+} from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -6,10 +10,26 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 
-import globalCss from "./styles/global.css";
-import lightThemeCss from "./styles/themes/light.css";
+import { getConfig } from "./loaders/config";
+
+import global from "./styles/global.css";
+import basicTheme from "./styles/themes/basic.css";
+import purpleTheme from "./styles/themes/purple.css";
+
+import Header from "./components/header";
+import Footer from "./components/footer";
+
+type LoaderData = {
+  title: string;
+  theme: string;
+};
+
+export const loader: LoaderFunction = async () => {
+  return await getConfig();
+};
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -18,32 +38,43 @@ export const meta: MetaFunction = () => ({
 
 export const links: LinksFunction = () => [
   {
+    rel: "preload",
+    href: "/fonts/inter/inter.ttf",
+    as: "font",
+    type: "font/ttf",
+    crossOrigin: "anonymous",
+  },
+  {
     rel: "stylesheet",
-    href: globalCss,
+    href: global,
   },
 ];
 
 export default function App() {
+  const { title, theme } = useLoaderData<LoaderData>();
+
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <head>
         <Meta />
 
-        <title>Name of Store</title>
+        <title>{title}</title>
 
-        <link rel="stylesheet" href={lightThemeCss} />
+        {theme === "basic" && <link rel="stylesheet" href={basicTheme} />}
+
+        {theme === "purple" && <link rel="stylesheet" href={purpleTheme} />}
 
         <Links />
       </head>
 
       <body>
-        <header>Header</header>
+        <Header />
 
         <main>
           <Outlet />
         </main>
 
-        <footer>Footer</footer>
+        <Footer />
 
         <ScrollRestoration />
         <Scripts />

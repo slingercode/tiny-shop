@@ -1,0 +1,17 @@
+:root {
+  /* Background */
+  --bg: hsl(280, 65%, 99.4%);
+
+  /* Text */
+  --text-low: hsl(272, 50%, 45.8%);
+  --text-high: hsl(272, 66%, 16%);
+}
+
+[data-theme="dark"] {
+  /* Background */
+  --bg: hsl(284, 20%, 9.6%);
+
+  /* Text */
+  --text-low: hsl(275, 80%, 71%);
+  --text-high: hsl(279, 75%, 95.7%);
+}
