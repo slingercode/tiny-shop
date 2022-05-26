@@ -39,9 +39,9 @@ export const meta: MetaFunction = () => ({
 export const links: LinksFunction = () => [
   {
     rel: "preload",
-    href: "/fonts/inter/inter.ttf",
+    href: "/fonts/inter/inter.woff2",
     as: "font",
-    type: "font/ttf",
+    type: "font/woff2",
     crossOrigin: "anonymous",
   },
   {
