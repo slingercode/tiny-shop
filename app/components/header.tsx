@@ -3,7 +3,7 @@ const Header: React.FC = ({ children }) => {
     <header>
       <div className="header_container">
         <div>
-          <h1 className="header_title">{children}</h1>
+          <h2 className="header_title">{children}</h2>
         </div>
       </div>
     </header>

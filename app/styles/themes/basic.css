@@ -1,6 +1,7 @@
 :root {
   /* Backgrounds */
   --bg: hsl(300, 20%, 99%);
+  --bg-sub: hsl(300, 7.7%, 97.5%);
   --bg-solid: hsl(252, 4%, 57.3%);
   --bg-footer: hsl(246, 6%, 9%);
 
@@ -19,7 +20,8 @@
 [data-theme="dark"] {
   /* Backgrounds */
   --bg: hsl(246, 6%, 9%);
-  --solid: hsl(252, 4%, 45.2%);
+  --bg-sub: hsl(240, 5.1%, 11.6%);
+  --bg-solid: hsl(252, 4%, 45.2%);
   --bg-footer: hsl(246, 6%, 9%);
 
   /* Borders */
