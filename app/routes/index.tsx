@@ -44,6 +44,22 @@ const ProductCover: React.FC<ProductType> = (product) => {
   );
 };
 
+const Product: React.FC<{ product: ProductType }> = ({ product }) => {
+  const url =
+    "https://res.cloudinary.com/dj4s8gwk9/image/upload/e_improve,w_502,h_576,c_thumb/tiny-shop-example/product-1_r0qryp.webp";
+
+  return (
+    <div className="product">
+      <img src={url} alt="Product" width="502" height="576" />
+
+      <div className="data">
+        <h2>{product.name}</h2>
+        <p>{formattedPrice(product.price)}</p>
+      </div>
+    </div>
+  );
+};
+
 export default function Index() {
   const products = useLoaderData<LoaderData>();
 
@@ -55,7 +71,13 @@ export default function Index() {
 
       <div className="product_carousel_container">carousel</div>
 
-      <div className="product_main_container">main</div>
+      <div className="product_main_container">
+        <div className="grid">
+          {products.slice(6).map((product) => (
+            <Product key={product.id} product={product} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
